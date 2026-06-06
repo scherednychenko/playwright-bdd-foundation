@@ -5,6 +5,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # Keep @types/node aligned with the Node 22 LTS runtime used in CI.
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
     groups:
       # Keep Playwright's runner and browsers bumped together.
       playwright:
