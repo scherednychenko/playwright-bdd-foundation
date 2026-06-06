@@ -14,7 +14,7 @@ jobs:
     name: Typecheck, lint, format
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -35,7 +35,7 @@ jobs:
       BASE_URL: ${{ vars.E2E_BASE_URL }}
       E2E_TAGS: '@smoke'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -64,7 +64,7 @@ jobs:
       E2E_TAGS: '@smoke'
       E2E_ALL_BROWSERS: '1'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
