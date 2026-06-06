@@ -1,0 +1,37 @@
+{
+  "name": "playwright-bdd-foundation",
+  "version": "0.1.0",
+  "description": "A small, readable BDD + Playwright E2E starter: Gherkin features over page objects with a typed route catalog.",
+  "license": "MIT",
+  "author": "Sergiy Cherednychenko",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "demo": "node demo/server.mjs",
+    "e2e:generate": "cd e2e && bddgen",
+    "e2e:list": "cd e2e && bddgen && playwright test -c playwright.config.ts --list",
+    "e2e:test": "cd e2e && bddgen && playwright test -c playwright.config.ts",
+    "e2e:ui": "cd e2e && bddgen && playwright test -c playwright.config.ts --ui",
+    "typecheck": "tsc -p e2e/tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@eslint/js": "^9.18.0",
+    "@playwright/test": "1.52.0",
+    "@types/node": "^22.15.30",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-playwright": "^2.1.0",
+    "globals": "^15.14.0",
+    "playwright-bdd": "8.4.2",
+    "prettier": "^3.4.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.20.0"
+  }
+}

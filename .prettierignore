@@ -1,0 +1,8 @@
+node_modules
+pnpm-lock.yaml
+assets
+e2e/.features-gen
+e2e/playwright-report
+e2e/test-results
+playwright-report
+test-results
