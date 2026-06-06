@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="460" viewBox="0 0 1280 460" role="img" aria-label="Playwright BDD Foundation — end-to-end test automation">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#121d31"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2EAD33"/>
+      <stop offset="1" stop-color="#3aa0ff"/>
+    </linearGradient>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+      .title { font-size: 56px; font-weight: 800; fill: #e6edf3; }
+      .kicker { font-size: 17px; font-weight: 600; letter-spacing: 4px; fill: #2EAD33; }
+      .subtitle { font-size: 21px; font-weight: 400; fill: #9aa7b4; }
+      .chip { font-size: 15px; font-weight: 600; fill: #c9d4e0; }
+      .node-main { font-size: 17px; font-weight: 700; fill: #e6edf3; }
+      .node-sub { font-size: 12px; font-weight: 500; fill: #8b98a6; }
+      .footer { font-size: 14px; font-weight: 500; fill: #8b98a6; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="460" rx="20" fill="url(#bg)"/>
+  <rect width="1280" height="6" fill="url(#accent)"/>
+  <circle cx="1130" cy="70" r="220" fill="#3aa0ff" opacity="0.05"/>
+  <circle cx="160" cy="420" r="180" fill="#2EAD33" opacity="0.05"/>
+
+  <!-- Heading -->
+  <text x="640" y="92" text-anchor="middle" class="kicker">END-TO-END TEST AUTOMATION</text>
+  <text x="640" y="158" text-anchor="middle" class="title">Playwright BDD Foundation</text>
+  <text x="640" y="198" text-anchor="middle" class="subtitle">Readable Gherkin features over page objects — in TypeScript</text>
+
+  <!-- Tag chips -->
+  <g>
+    <rect x="411" y="222" width="78"  height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="450" y="242" text-anchor="middle" class="chip">@smoke</text>
+    <rect x="501" y="222" width="116" height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="559" y="242" text-anchor="middle" class="chip">@navigation</text>
+    <rect x="629" y="222" width="84"  height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="671" y="242" text-anchor="middle" class="chip">@search</text>
+    <rect x="725" y="222" width="66"  height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="758" y="242" text-anchor="middle" class="chip">@a11y</text>
+    <rect x="803" y="222" width="90"  height="30" rx="15" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="848" y="242" text-anchor="middle" class="chip">@network</text>
+  </g>
+
+  <!-- Pipeline: Features -> Steps -> Page Objects -> Routes -->
+  <g>
+    <rect x="150" y="290" width="200" height="74" rx="14" fill="#0f1830" stroke="#2EAD33" stroke-opacity="0.5"/>
+    <text x="250" y="324" text-anchor="middle" class="node-main">Features</text>
+    <text x="250" y="346" text-anchor="middle" class="node-sub">.feature (Gherkin)</text>
+
+    <rect x="410" y="290" width="200" height="74" rx="14" fill="#0f1830" stroke="#ffffff" stroke-opacity="0.14"/>
+    <text x="510" y="324" text-anchor="middle" class="node-main">Steps</text>
+    <text x="510" y="346" text-anchor="middle" class="node-sub">thin orchestration</text>
+
+    <rect x="670" y="290" width="200" height="74" rx="14" fill="#0f1830" stroke="#ffffff" stroke-opacity="0.14"/>
+    <text x="770" y="324" text-anchor="middle" class="node-main">Page Objects</text>
+    <text x="770" y="346" text-anchor="middle" class="node-sub">selectors + waits</text>
+
+    <rect x="930" y="290" width="200" height="74" rx="14" fill="#0f1830" stroke="#3aa0ff" stroke-opacity="0.5"/>
+    <text x="1030" y="324" text-anchor="middle" class="node-main">Routes</text>
+    <text x="1030" y="346" text-anchor="middle" class="node-sub">typed catalog</text>
+
+    <g stroke="url(#accent)" stroke-width="2.5" fill="none">
+      <path d="M352 327 H408" marker-end="url(#arrow)"/>
+      <path d="M612 327 H668" marker-end="url(#arrow)"/>
+      <path d="M872 327 H928" marker-end="url(#arrow)"/>
+    </g>
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" fill="#3aa0ff"/>
+      </marker>
+    </defs>
+  </g>
+
+  <!-- Footer -->
+  <text x="640" y="418" text-anchor="middle" class="footer">Chromium · Firefox · WebKit&#160;&#160;•&#160;&#160;axe-core a11y&#160;&#160;•&#160;&#160;network mocking&#160;&#160;•&#160;&#160;self-contained demo</text>
+</svg>

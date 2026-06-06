@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      # Keep Playwright's runner and browsers bumped together.
+      playwright:
+        patterns:
+          - '@playwright/test'
+          - 'playwright-bdd'
+      dev-tooling:
+        patterns:
+          - 'eslint*'
+          - '@eslint/*'
+          - 'typescript-eslint'
+          - 'prettier'
+          - 'typescript'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

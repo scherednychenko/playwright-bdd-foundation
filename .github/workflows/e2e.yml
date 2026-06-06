@@ -1,0 +1,83 @@
+name: E2E
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    name: Typecheck, lint, format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - run: pnpm run lint
+      - run: pnpm run format:check
+
+  e2e:
+    name: E2E (chromium)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # Leave empty to run against the bundled demo app (default, fully self-contained).
+      # Set the E2E_BASE_URL repository variable to point the suite at a deployed app.
+      BASE_URL: ${{ vars.E2E_BASE_URL }}
+      E2E_TAGS: '@smoke'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm run e2e:test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-artifacts-${{ github.run_id }}
+          path: |
+            e2e/test-results
+            e2e/playwright-report
+          if-no-files-found: ignore
+
+  cross-browser:
+    name: E2E (cross-browser)
+    # Full Chromium/Firefox/WebKit matrix on main and on demand — keeps PR feedback fast.
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      BASE_URL: ${{ vars.E2E_BASE_URL }}
+      E2E_TAGS: '@smoke'
+      E2E_ALL_BROWSERS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps
+      - run: pnpm run e2e:test
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-artifacts-cross-browser-${{ github.run_id }}
+          path: |
+            e2e/test-results
+            e2e/playwright-report
+          if-no-files-found: ignore

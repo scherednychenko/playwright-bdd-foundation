@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search — Demo App</title>
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/search">Search</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Search</h1>
+
+      <form id="search-form">
+        <label for="q">Search</label>
+        <input id="q" name="q" type="search" autocomplete="off" />
+        <button type="submit">Search</button>
+      </form>
+
+      <ul id="results" aria-label="Results"></ul>
+      <p id="no-results" hidden>No results found</p>
+      <p id="error" role="alert" hidden>Something went wrong</p>
+    </main>
+
+    <script>
+      const form = document.getElementById('search-form');
+      const input = document.getElementById('q');
+      const results = document.getElementById('results');
+      const noResults = document.getElementById('no-results');
+      const error = document.getElementById('error');
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        results.replaceChildren();
+        noResults.hidden = true;
+        error.hidden = true;
+
+        try {
+          const response = await fetch(`/api/search?q=${encodeURIComponent(input.value)}`);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+
+          if (!data.results.length) {
+            noResults.hidden = false;
+            return;
+          }
+
+          for (const item of data.results) {
+            const li = document.createElement('li');
+            li.textContent = item;
+            results.appendChild(li);
+          }
+        } catch {
+          error.hidden = false;
+        }
+      });
+    </script>
+  </body>
+</html>
