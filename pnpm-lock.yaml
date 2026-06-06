@@ -33,8 +33,8 @@ importers:
         specifier: ^2.1.0
         version: 2.10.4(eslint@9.39.4)
       globals:
-        specifier: ^15.14.0
-        version: 15.15.0
+        specifier: ^17.6.0
+        version: 17.6.0
       playwright-bdd:
         specifier: 8.4.2
         version: 8.4.2(@playwright/test@1.52.0)
@@ -468,10 +468,6 @@ packages:
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
-    engines: {node: '>=18'}
-
-  globals@15.15.0:
-    resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
     engines: {node: '>=18'}
 
   globals@17.6.0:
@@ -1225,8 +1221,6 @@ snapshots:
       is-glob: 4.0.3
 
   globals@14.0.0: {}
-
-  globals@15.15.0: {}
 
   globals@17.6.0: {}
 
