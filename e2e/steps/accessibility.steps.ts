@@ -13,15 +13,18 @@ type Violation = Awaited<ReturnType<AxeBuilder['analyze']>>['violations'][number
 // signal-rich without being noisy.
 const BLOCKING_IMPACTS = new Set(['critical', 'serious']);
 
-Then('the {string} page has no critical accessibility violations', async ({ app }) => {
-  const { violations } = await new AxeBuilder({ page: app.page })
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-    .analyze();
+Then(
+  'the {string} page has no critical accessibility violations',
+  async ({ app }, _pageKey: string) => {
+    const { violations } = await new AxeBuilder({ page: app.page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      .analyze();
 
-  const blocking = violations.filter((v) => BLOCKING_IMPACTS.has(v.impact ?? ''));
+    const blocking = violations.filter((v) => BLOCKING_IMPACTS.has(v.impact ?? ''));
 
-  expect(blocking, describeViolations(blocking)).toEqual([]);
-});
+    expect(blocking, describeViolations(blocking)).toEqual([]);
+  },
+);
 
 function describeViolations(violations: Violation[]): string {
   if (violations.length === 0) return 'No accessibility violations';
