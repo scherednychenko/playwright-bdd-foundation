@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "Sergiy Cherednychenko",
   "private": true,
+  "packageManager": "pnpm@11.5.2",
   "engines": {
     "node": ">=22"
   },
