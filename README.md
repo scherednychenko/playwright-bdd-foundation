@@ -134,6 +134,15 @@ ARCHITECTURE.md       # design rationale and how this scales up
 4. The page object asserts URL, document readiness, and a stable page marker.
 5. Route metadata (path, expected title, ready text) lives in one typed catalog.
 
+## Test report
+
+Every run produces a Playwright HTML report; traces, screenshots, and video are
+retained on failure, and CI uploads the report as an artifact on each run.
+
+<p align="center">
+  <img src="assets/report.png" alt="Playwright HTML report showing 8 passing scenarios across navigation, search, resilience, and accessibility" width="100%" />
+</p>
+
 ## Add a page
 
 Add an entry to [`e2e/data/navigation.ts`](e2e/data/navigation.ts):
