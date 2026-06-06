@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { defineBddConfig } from 'playwright-bdd';
+import { resolve } from 'node:path';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -13,6 +14,11 @@ const tags = process.env.E2E_TAGS || '@smoke';
 // needs Chromium. Set E2E_ALL_BROWSERS=1 (CI does this on main) for the full matrix.
 const allBrowsers = process.env.E2E_ALL_BROWSERS === '1';
 
+// Pin artifact locations to this config's directory so they land in e2e/ no
+// matter the working directory — keeps them in sync with the CI upload paths.
+const reportDir = resolve(__dirname, 'playwright-report');
+const resultsDir = resolve(__dirname, 'test-results');
+
 const testDir = defineBddConfig({
   outputDir: '.features-gen/navigation',
   features: ['features/**/*.feature'],
@@ -22,14 +28,15 @@ const testDir = defineBddConfig({
 
 export default defineConfig({
   testDir,
+  outputDir: resultsDir,
   timeout: 60_000,
   expect: {
     timeout: 10_000,
   },
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI
-    ? [['github'], ['html', { open: 'never' }]]
-    : [['list'], ['html', { open: 'never' }]],
+    ? [['github'], ['html', { open: 'never', outputFolder: reportDir }]]
+    : [['list'], ['html', { open: 'never', outputFolder: reportDir }]],
   // Boot the bundled demo app unless an external target is supplied via BASE_URL.
   // This keeps the suite self-contained: clone, install, and `pnpm run e2e:test` is green.
   webServer: externalBaseURL
