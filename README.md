@@ -5,7 +5,7 @@
 # Playwright BDD Foundation
 
 [![E2E](https://github.com/scherednychenko/playwright-bdd-foundation/actions/workflows/e2e.yml/badge.svg)](https://github.com/scherednychenko/playwright-bdd-foundation/actions/workflows/e2e.yml)
-[![Playwright](https://img.shields.io/badge/Playwright-1.52-2EAD33?logo=playwright&logoColor=white)](https://playwright.dev/)
+[![Playwright](https://img.shields.io/badge/Playwright-1.60-2EAD33?logo=playwright&logoColor=white)](https://playwright.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
